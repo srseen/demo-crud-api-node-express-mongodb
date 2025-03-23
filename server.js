@@ -28,6 +28,5 @@ app.get("/", (req, res) => {
 readdirSync("./Routes").map((r) => app.use("/api", require(`./Routes/${r}`)));
 
 app.listen(port, () => {
-  console.log(`Server start port ${port}`);
   console.log(`Server running at http://localhost:${port}`);
 });

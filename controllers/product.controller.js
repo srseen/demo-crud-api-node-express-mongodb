@@ -1,14 +1,23 @@
+const Product = require("../models/product.model");
+
 // read function is used to get all products from the database.
 const read = async (req, res) => {
-  res.send("Hello Product!");
+  try {
+    const producted = await Product.find({}).exec();
+    res.send(producted);
+  } catch (err) {
+    console.log(err);
+    res.send("Product Not Found!");
+    res.status(500).send("server error!");
+  }
 };
 
 // readById function is used to get a product by id from the database.
 const readById = async (req, res) => {
   try {
-    const { id } = req.params;
-    console.log(id);
-    res.send("Product Found!");
+    const id = req.params.id;
+    const producted = await Product.findOne({ _id: id }).exec();
+    res.send(producted);
   } catch (err) {
     console.log(err);
     res.send("Product Not Found!");
@@ -20,7 +29,8 @@ const readById = async (req, res) => {
 const create = async (req, res) => {
   try {
     console.log(req.body);
-    res.send("Product Created!");
+    const producted = await Product(req.body).save();
+    res.send(producted);
   } catch (err) {
     console.log(err);
     res.send("Product Not Created!");
@@ -31,8 +41,11 @@ const create = async (req, res) => {
 // update function is used to update a product in the database.
 const update = async (req, res) => {
   try {
-    console.log(req.body);
-    res.send("Product Updated!");
+    const id = req.params.id;
+    const updated = await Product.findOneAndUpdate({ _id: id }, req.body, {
+      new: true,
+    }).exec();
+    res.send(updated);
   } catch (err) {
     console.log(err);
     res.send("Product Not Updated!");
@@ -43,9 +56,9 @@ const update = async (req, res) => {
 // remove function is used to remove a product from the database.
 const remove = async (req, res) => {
   try {
-    const { id } = req.params;
-    console.log(id);
-    res.send("Product Removed!");
+    const id = req.params.id;
+    const removed = await Product.findOneAndDelete({ _id: id }).exec();
+    res.send(removed);
   } catch (err) {
     console.log(err);
     res.send("Product Not Removed!");
