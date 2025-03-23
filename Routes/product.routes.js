@@ -6,7 +6,7 @@ const {
   create,
   update,
   remove,
-} = require("../controllers/product");
+} = require("../controllers/product.controller");
 
 // get all products
 router.get("/product", read);
