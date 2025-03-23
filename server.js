@@ -3,11 +3,15 @@ const { readdirSync } = require("fs");
 const morgan = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const connectDB = require("./config/db");
+
+require("dotenv").config();
 
 // const authRouter = require("./Routes/auth");
 // const productRouter = require("./Routes/product");
 const app = express();
-const port = 3000;
+connectDB();
+const port = process.env.PORT;
 
 app.use(morgan("dev"));
 app.use(cors());
