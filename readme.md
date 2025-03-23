@@ -13,23 +13,26 @@
 npm init -y
 ```
 
+- คำสั่งที่ใช้สร้างไฟล์ package.json เป็นไฟล์ที่ใช้เก็บข้อมูลเกี่ยวกับโปรเจกต์ Node.js
+
 ```jsx
 npm install express
 ```
+
+- express เป็น web framework สำหรับ Node.js ที่ช่วยให้การพัฒนาเว็บแอปและ API มีเครื่องมือที่ช่วยจัดการ routing, middleware, request, response และฟีเจอร์อื่นๆ ที่เกี่ยวข้องกับเซิร์ฟเวอร์ HTTP
 
 ```jsx
 npm install nodemon
 ```
 
-> เพิ่มคำสั่ง start ที่ไฟล์ package.json เพื่อง่ายต่อการรันคำสั่งของ nodemon
-> 
-> 
-> ```
-> "scripts": {
->     "start": "nodemon server.js"
->   },
-> ```
-> 
+- nodemon เป็นเครื่องมือที่ช่วยให้ Node.js รีสตาร์ทเซิร์ฟเวอร์อัตโนมัติ เมื่อมีการเปลี่ยนแปลงโค้ดในไฟล์ โดยไม่ต้องรันคำสั่ง node server.js ใหม่เองทุกครั้ง
+  > เพิ่มคำสั่ง start ที่ไฟล์ package.json เพื่อง่ายต่อการรันคำสั่งของ nodemon
+  >
+  > ```
+  > "scripts": {
+  >     "start": "nodemon server.js"
+  >   },
+  > ```
 
 ---
 
@@ -48,6 +51,8 @@ app.get("/", (req, res) => {
 ```jsx
 const router = express.Router();
 ```
+
+- โมดูลจัดการเส้นทาง (Routing Module) ของ Express ที่ช่วยแยกเส้นทาง (routes) ออกจากไฟล์หลัก (server.js ) ทำให้โค้ดสะอาดและจัดการได้ง่ายขึ้น
 
 ```jsx
 // ประกอบด้วย 3 ส่วน
@@ -153,19 +158,16 @@ module.exports = {
   update,
   remove,
 };
-
 ```
 
 3. การใช้โดยใช้ lib ของ node.js ที่ชื่อ fs
 
 ```jsx
+// import
 const { readdirSync } = require("fs");
-```
 
-```jsx
-readdirSync("./Routes")
-	.map((r) => app.use("/api", require(`./Routes/${r}`)));
-
+// เรียกใช้งาน โดยจะ map ที่ ไฟล์ที่อยู่ใน folder Routes
+readdirSync("./Routes").map((r) => app.use("/api", require(`./Routes/${r}`)));
 ```
 
 ### ref:
@@ -183,6 +185,8 @@ readdirSync("./Routes")
 ```jsx
 npm i morgan
 ```
+
+- Morgan เป็น middleware สำหรับ logging (บันทึกข้อมูล request) ใน Express.js ช่วยให้ดูรายละเอียดของ HTTP requests ได้ง่ายขึ้น เช่น method, URL, status code, response time เป็นต้น
 
 ```jsx
 const morgan = require("morgan");
@@ -202,11 +206,16 @@ GET /api/product 304 2.648 ms - -
 npm i body-parser
 ```
 
+- body-parser เป็น middleware ใน Express.js ที่ใช้สำหรับ แปลงข้อมูลจาก HTTP request body ให้อยู่ในรูปแบบที่ใช้งานได้ เช่น JSON หรือ URL-encoded data  
+  ปัจจุบัน Express.js เวอร์ชัน 4.16 ขึ้นไปมี body-parser ในตัวแล้ว ผ่าน express.json() และ express.urlencoded()
+
 ### 3.cors
 
 ```jsx
 npm i cors
 ```
+
+- CORS (Cross-Origin Resource Sharing) เป็นกลไกความปลอดภัยของเว็บเบราว์เซอร์ที่ช่วยให้เซิร์ฟเวอร์กำหนดสิทธิ์ว่าคลายแอปพลิเคชันจาก โดเมนอื่น (Cross-Origin) สามารถเข้าถึง API หรือทรัพยากรของเซิร์ฟเวอร์ได้หรือไม่
 
 ---
 
@@ -217,6 +226,8 @@ npm i cors
 ```jsx
 npm i dotenv
 ```
+
+- dotenv เป็นแพ็กเกจที่ใช้ โหลดค่าตัวแปรสภาพแวดล้อม (Environment Variables) จากไฟล์ .env เข้าไปใน process.env ใน Node.js
 
 เปลี่ยน env.example เป็น .env
 
@@ -230,6 +241,8 @@ MONGODB_URI=
 ```jsx
 npm i mongoose
 ```
+
+- Mongoose เป็น ODM (Object Data Modeling) library สำหรับ MongoDB ที่ใช้ใน Node.js ช่วยให้เราสามารถจัดการ MongoDB database ได้ง่ายขึ้น โดยใช้ Schema และ Model
 
 ```jsx
 // ไฟล์ config/db.js
