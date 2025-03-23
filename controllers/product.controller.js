@@ -1,4 +1,4 @@
-const Product = require("../models/product.model");
+const Product = require("../Models/product.model");
 
 // read function is used to get all products from the database.
 const read = async (req, res) => {
