@@ -1,33 +1,25 @@
 const express = require("express");
 const router = express.Router();
+const {
+  read,
+  readById,
+  create,
+  update,
+  remove,
+} = require("../controllers/product");
 
 // get all products
-router.get("/product", (req, res) => {
-  res.send("Hello Product!");
-});
+router.get("/product", read);
 
 // get product by id
-router.get("/product/:id", (req, res) => {
-  console.log(req.params.id);
-  res.send("Hello Product!");
-});
+router.get("/product/:id", readById);
 
 // create product
-router.post("/product", (req, res) => {
-  console.log(req.body);
-  res.send("Product Created!");
-});
+router.post("/product", create);
 
 // update product
-router.put("/product/:id", (req, res) => {
-  console.log(req.body);
-  res.send("Product Updated!");
-});
+router.put("/product/:id", update);
 
 // delete product
-router.delete("/product/:id", (req, res) => {
-  console.log(req.body);
-  res.send("Product Deleted!");
-});
-
+router.delete("/product/:id", remove);
 module.exports = router;
