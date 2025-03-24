@@ -19,7 +19,7 @@ npm install
 
 ---
 
-## ติดตั้ง Library ที่ folder server
+## ติดตั้ง Library
 
 ```jsx
 npm init -y
