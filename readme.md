@@ -38,7 +38,7 @@ npm install nodemon
 
 ## การสร้าง Routes
 
-1. สร้าง routes (get post put delete) ตรงๆ ใน server.js เช่น
+### 1. สร้าง routes (get post put delete) ตรงๆ ใน server.js เช่น
 
 ```jsx
 app.get("/", (req, res) => {
@@ -46,7 +46,7 @@ app.get("/", (req, res) => {
 });
 ```
 
-2. ถ้าต้องการแยก routes ใน folder ใหม่ เช่น folder Routes
+### 2. ถ้าต้องการแยก routes ใน folder ใหม่ เช่น folder Routes
 
 ```jsx
 const router = express.Router();
@@ -160,7 +160,7 @@ module.exports = {
 };
 ```
 
-3. การใช้โดยใช้ lib ของ node.js ที่ชื่อ fs
+### 3. การเรียกใช้ routes โดยใช้ lib ของ node.js ที่ชื่อ fs
 
 ```jsx
 // import
