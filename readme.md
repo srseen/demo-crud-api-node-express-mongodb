@@ -1,16 +1,19 @@
-# Node.js + Express.js สำหรับ API CRUD
-
-## การ clone เพื่อใช้งาน
-
-```jsx
-git clone https://github.com/srseen/demo-crud-api-node-express-mongodb.git
-```
+# **การใช้งาน**
 
 ```jsx
 npm install
 ```
 
+- เปลี่ยน env.example เป็น .env
+
+```
+PORT=
+MONGODB_URI=
+```
+
 ---
+
+# Node.js + Express.js สำหรับ API CRUD
 
 ## สิ่งที่ต้องติดตั้ง
 
@@ -181,12 +184,6 @@ const { readdirSync } = require("fs");
 // เรียกใช้งาน โดยจะ map ที่ ไฟล์ที่อยู่ใน folder Routes
 readdirSync("./Routes").map((r) => app.use("/api", require(`./Routes/${r}`)));
 ```
-
-### ref:
-
-- [https://expressjs.com/en/starter/basic-routing.html](https://expressjs.com/en/starter/basic-routing.html)
-- [https://expressjs.com/en/5x/api.html](https://expressjs.com/en/5x/api.html)
-- [https://expressjs.com/en/starter/examples.html](https://expressjs.com/en/starter/examples.html)
 
 ---
 
